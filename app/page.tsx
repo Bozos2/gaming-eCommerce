@@ -1,4 +1,10 @@
 import Image from "next/image";
+import SearchIcon from "./assets/NavbarIcons/SearchIcon";
+import HomeIcon from "./assets/NavbarIcons/MobileIcons/HomeIcon";
+import ProductsIcon from "./assets/NavbarIcons/MobileIcons/ProductsIcon";
+import SpecialIcon from "./assets/NavbarIcons/MobileIcons/SpecialIcon";
+import CartMobile from "./assets/NavbarIcons/MobileIcons/CartMobile";
+import ProfileIcon from "./assets/NavbarIcons/MobileIcons/ProfileIcon";
 
 export default function Home() {
   return (

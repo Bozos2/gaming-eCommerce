@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./provider";
 
 import Navbar from "./components/Navbar/Navbar";
+import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +23,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <Navbar />
           {children}
+          <MobileNavbar />
         </ThemeProvider>
       </body>
     </html>

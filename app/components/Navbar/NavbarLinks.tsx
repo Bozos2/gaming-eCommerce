@@ -13,42 +13,43 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import StripeIcon from "@/app/assets/NavbarIcons/StripeIcon";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "League of legends",
+    href: "/proizvodi/leagueoflegends",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Ovde možete pronađi razne heroje kao i karaktere iz Arcane serijala",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Warcraft",
+    href: "/proizvodi/warcraft",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Možete izabrati karaktera iz Horde,Alliancea ili pak neutralne rase",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Starcraft",
+    href: "/proizvodi/starcraft",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "U ovoj sekciji cemo se prisjetiti starih dana gejminga uz naše figurice",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "Counter Strike",
+    href: "/proizvodi/counter-strike",
+    description:
+      "Volite karambit? ili pak butterfly?Sve to pronađite u CS sekciji",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    title: "Battle Royale",
+    href: "/proizvodi/battleroyale",
+    description: "Figurice od PUBG-a,Fortnite,Warzonea pa sve do Apexa",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
+    title: "Others",
+    href: "/proizvodi/others",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Ovdje možete pronaći raznolike figurice poput onih iz Minecrafta,GTA,Withera i mnoge druge",
   },
 ];
 
@@ -57,39 +58,42 @@ const NavbarLinks = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Stranice</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    href="/onlinetrgovina"
                   >
+                    <StripeIcon className="h-24 w-24" />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                      Način plaćanja
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Uz Stripe vam omogućavamo brz i siguran način plaćanja.
+                      Klikom saznajte više
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/docs" title="Početna">
+                Na početnoj stranici saznajte najbitnije stvari o nasim
+                produktim i nasem poslovanju
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/docs/installation" title="Politika rada">
+                Ovde možete saznati sve o našem poslovanju i vašoj privatnosti
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/docs/primitives/typography" title="Kontakt">
+                Ukoliko imate bilo kakvih pitanja i problema možete nas
+                kontaktirati
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Proizvodi</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -107,7 +111,7 @@ const NavbarLinks = () => {
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Special
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

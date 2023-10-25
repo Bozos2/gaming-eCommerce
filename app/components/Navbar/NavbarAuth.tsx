@@ -4,7 +4,10 @@ import Link from "next/link";
 const NavbarAuth = () => {
   return (
     <div className="flex justify-center items-center gap-2">
-      <Link href="/login" className={buttonVariants({ variant: "outline" })}>
+      <Link
+        href="/login"
+        className={`${buttonVariants({ variant: "outline" })} hidden sm:block`}
+      >
         Log in
       </Link>
       <Link href="/login" className={buttonVariants({ variant: "default" })}>

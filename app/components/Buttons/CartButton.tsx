@@ -12,7 +12,7 @@ const CartButton = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="cursor-pointer font-oswald transition ease-in duration-200 hover:-translate-y-0.5  hover:scale-110">
+        <button className="cursor-pointer font-oswald transition ease-in duration-200 hover:-translate-y-0.5  hover:scale-110 hidden sm:block">
           <span className="">
             <CartIcon />
           </span>

@@ -5,15 +5,16 @@ const SearchIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 -0.5 25 25"
-    width={18}
-    height={28}
+    width={100}
+    height={100}
     {...props}
   >
     <g
-      stroke="#000"
+      stroke="#ffffff"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
+      className="active:stroke-[#22c55e] active:stroke-2"
     >
       <path
         d="M5.5 11.146a6.144 6.144 0 1 1 12.288-.002 6.144 6.144 0 0 1-12.288.002Z"
