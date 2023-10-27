@@ -5,8 +5,8 @@ import CartButton from "../Buttons/CartButton";
 
 const Navbar = () => {
   return (
-    <header className="sticky left-0 top-0 w-full">
-      <nav className="h-20 flex justify-around max-w-full m-auto  bg-zinc-950">
+    <header className="sticky  top-0 w-full font-poppins z-40">
+      <nav className="h-20 flex justify-around max-w-full m-auto  bg-neutral-900">
         <div className="flex items-center">
           <NavbarLogo />
         </div>

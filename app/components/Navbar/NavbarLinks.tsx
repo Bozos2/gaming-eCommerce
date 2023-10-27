@@ -58,12 +58,14 @@ const NavbarLinks = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Stranice</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-neutral-900">
+            Stranice
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/onlinetrgovina"
                   >
@@ -75,17 +77,17 @@ const NavbarLinks = () => {
                       Uz Stripe vam omogućavamo brz i siguran način plaćanja.
                       Klikom saznajte više
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Početna">
+              <ListItem href="/pocetna" title="Početna">
                 Na početnoj stranici saznajte najbitnije stvari o nasim
                 produktim i nasem poslovanju
               </ListItem>
-              <ListItem href="/docs/installation" title="Politika rada">
+              <ListItem href="/politika rada" title="Politika rada">
                 Ovde možete saznati sve o našem poslovanju i vašoj privatnosti
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Kontakt">
+              <ListItem href="/kontakt" title="Kontakt">
                 Ukoliko imate bilo kakvih pitanja i problema možete nas
                 kontaktirati
               </ListItem>
@@ -93,7 +95,9 @@ const NavbarLinks = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Proizvodi</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-neutral-900">
+            Proizvodi
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -109,7 +113,7 @@ const NavbarLinks = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/special" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Special
             </NavigationMenuLink>

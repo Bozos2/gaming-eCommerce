@@ -10,7 +10,7 @@ const NavbarAuth = () => {
       >
         Log in
       </Link>
-      <Link href="/login" className={buttonVariants({ variant: "default" })}>
+      <Link href="/signup" className={buttonVariants({ variant: "default" })}>
         Sign up
       </Link>
     </div>
