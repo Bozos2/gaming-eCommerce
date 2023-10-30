@@ -62,19 +62,19 @@ const HomeText = () => {
           initial={{ x: "-100%", opacity: 0 }}
           animate={{ x: "0%", opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col sm:flex-row m-12 sm:m-0 gap-6 pt-4 sm:pt-16  font-poppins font-medium"
+          className="flex flex-col sm:flex-row m-12 sm:m-0 gap-6 pt-4 sm:pt-16  font-poppins"
         >
           <Button
             asChild
             variant="default"
-            className="py-7 px-16 hover:bg-foreground"
+            className="py-7 px-16 hover:bg-foreground hover:text-primary font-bold shadow-lg shadow-red-700/30"
           >
             <Link href="#">Kupi sada</Link>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="py-7 px-6 border border-foreground"
+            className="py-7 px-6 border border-foreground font-medium"
           >
             <Link href="#">
               <EnterIcon className="mr-2 h-6 w-6" />

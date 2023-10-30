@@ -16,7 +16,7 @@ const CartButton = () => {
           <span className="">
             <CartIcon />
           </span>
-          <span className="absolute mt-[-52px] ml-2 font-semibold bg-red-600 px-2 rounded-full">
+          <span className="absolute mt-[-52px] ml-2 font-semibold bg-blue-700 px-2 rounded-full">
             0
           </span>
         </button>

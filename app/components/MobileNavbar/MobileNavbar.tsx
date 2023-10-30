@@ -38,8 +38,8 @@ const MobileNavbar = () => {
     >
       <ul className="flex flex-row">
         <Link
-          href="/home"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#22c55e] focus:border-t-2 focus:border-[#22c55e] focus:text-[11px]"
+          href="#"
+          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
         >
           <li className="flex flex-col items-center">
             <HomeIcon />
@@ -47,8 +47,8 @@ const MobileNavbar = () => {
           </li>
         </Link>
         <Link
-          href="/proizvodi"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#22c55e] focus:border-t-2 focus:border-[#22c55e] focus:text-[11px]"
+          href="#"
+          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
         >
           <li className="flex flex-col items-center">
             <ProductsIcon />
@@ -56,8 +56,8 @@ const MobileNavbar = () => {
           </li>
         </Link>
         <Link
-          href="/special"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#22c55e] focus:border-t-2 focus:border-[#22c55e] focus:text-[11px]"
+          href="#"
+          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
         >
           <li className="flex flex-col items-center">
             <SpecialIcon />
@@ -65,8 +65,8 @@ const MobileNavbar = () => {
           </li>
         </Link>
         <Link
-          href="/košarica"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#22c55e] focus:border-t-2 focus:border-[#22c55e] focus:text-[11px]"
+          href="#"
+          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
         >
           <li className="flex flex-col items-center">
             <CartMobile />
@@ -74,8 +74,8 @@ const MobileNavbar = () => {
           </li>
         </Link>
         <Link
-          href="/profil"
-          className="min-w-16 w-[126px] px-[9px] pt-[7px] focus:text-[#22c55e] focus:border-t-2 focus:border-[#22c55e] focus:text-[11px]"
+          href="#"
+          className="min-w-16 w-[126px] px-[9px] pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
         >
           <li className="flex flex-col items-center">
             <ProfileIcon />
