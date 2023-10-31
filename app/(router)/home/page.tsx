@@ -6,6 +6,8 @@ import AboutText from "@/app/components/UI/AboutText";
 import AboutIcons from "@/app/components/UI/AboutIcons";
 import UsersText from "@/app/components/UI/UsersText";
 import CommunitySection from "@/app/components/UI/CommunitySection";
+import ContactUsForm from "@/app/components/UI/ContactUsForm";
+import Faq from "@/app/components/UI/FAQAccordion";
 
 const Home = () => {
   return (
@@ -32,6 +34,12 @@ const Home = () => {
       </div>
       <div className=" bg-neutral-900">
         <CommunitySection />
+      </div>
+      <div className="bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-stone-800 via-zinc-900 to-black">
+        <ContactUsForm />
+      </div>
+      <div className="bg-neutral-900">
+        <Faq />
       </div>
     </main>
   );

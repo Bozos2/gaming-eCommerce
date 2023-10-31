@@ -27,7 +27,9 @@ const CommunitySection = () => {
         transition={{ duration: 0.8 }}
         className="max-w-2xl mx-4"
       >
-        <h1 className="text-5xl font-roboto">Pridruži se našoj zajednici!</h1>
+        <h1 className="text-4xl sm:text-5xl font-roboto">
+          Pridruži se našoj zajednici!
+        </h1>
         <p className="text-lg font-poppins pt-4">
           Pozivamo te da postaneš deo naše strastvene zajednice posvećene 3d
           modeliranju. Zajedno stvaramo prostor gde možemo razmenjivati ideje,
