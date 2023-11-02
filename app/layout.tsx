@@ -5,6 +5,7 @@ import { ThemeProvider } from "./provider";
 
 import Navbar from "./components/Navbar/Navbar";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
+import Footer from "./components/Footer/Footer";
 
 const roboto = Roboto_Mono({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
           <MobileNavbar />
         </ThemeProvider>
       </body>

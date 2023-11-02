@@ -8,6 +8,7 @@ import UsersText from "@/app/components/UI/UsersText";
 import CommunitySection from "@/app/components/UI/CommunitySection";
 import ContactUsForm from "@/app/components/UI/ContactUsForm";
 import Faq from "@/app/components/UI/FAQAccordion";
+import Review from "@/app/components/UI/ReviewSection";
 
 const Home = () => {
   return (
@@ -40,6 +41,9 @@ const Home = () => {
       </div>
       <div className="bg-neutral-900">
         <Faq />
+      </div>
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-800 via-zinc-900 to-black">
+        <Review />
       </div>
     </main>
   );

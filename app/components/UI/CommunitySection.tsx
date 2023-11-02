@@ -19,7 +19,7 @@ const CommunitySection = () => {
   });
 
   return (
-    <section className="h-[800px] xl:h-[500px] flex flex-col xl:flex-row  justify-around items-center ">
+    <section className="h-[800px] xl:h-[500px] flex flex-col xl:flex-row  justify-around items-center">
       <motion.div
         ref={ref}
         initial={{ x: "-100%", opacity: 0 }}

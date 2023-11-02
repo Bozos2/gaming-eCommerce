@@ -3,9 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import img from "../../assets/maskota.png";
-import img2 from "../../assets/maskota2.png";
-import img3 from "../../assets/maskota3.png";
+import img from "../../assets/Images/maskota.png";
 
 const ImageStyle = {
   width: "350px",

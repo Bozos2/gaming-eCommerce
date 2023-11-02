@@ -15,8 +15,14 @@ const Faq = () => {
   });
 
   return (
-    <section className="h-[1200px] sm:h-[850px] xl:h-[550px] flex  xl:flex-row flex-col-reverse  justify-around items-center">
-      <div className="w-[320px] sm:w-[500px]">
+    <section className="h-[1000px] sm:h-[850px] xl:h-[550px] flex  xl:flex-row flex-col-reverse  justify-center gap-12 sm:gap-24 xl:justify-around xl:gap-0 items-center">
+      <motion.div
+        ref={ref}
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: inView ? "0%" : "-100%", opacity: inView ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-[320px] sm:w-[500px]"
+      >
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1" className="border-b-2">
             <AccordionTrigger className="text-lg pr-1">
@@ -67,7 +73,7 @@ const Faq = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-      </div>
+      </motion.div>
       <motion.div
         ref={ref}
         initial={{ x: "100%", opacity: 0 }}
