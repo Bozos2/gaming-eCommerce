@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono, Poppins, Black_Ops_One } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
+import { Providers } from "./NextUIProvider";
 
 import Navbar from "./components/Navbar/Navbar";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
@@ -36,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${roboto.variable} ${poppins.variable} ${blackops.variable}`}
       >
@@ -46,10 +47,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
-          <Footer />
-          <MobileNavbar />
+          <Providers>
+            <Navbar />
+            {children}
+            <Footer />
+            <MobileNavbar />
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

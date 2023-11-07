@@ -17,7 +17,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="max-w-xs mx-auto p-4">
+    <div className="max-w-xs  p-4 ">
       <h1 className="text-3xl font-semibold mb-2">Budi u trendu!</h1>
       <p className="text-foreground text-sm mb-4">
         Prijavi se za primanje najnovijih informacija o našim 3D figuricama i
@@ -27,7 +27,7 @@ const Newsletter = () => {
         <input
           type="email"
           placeholder="Tvoj e-mail"
-          className="p-2 border border-gray-300 rounded mb-2 focus:outline focus:outline-[#e11d48] focus:border-none"
+          className="p-2 border border-gray-300 rounded mb-2 focus:outline focus:outline-rose-600 focus:border-none"
         />
         <Button
           type="submit"

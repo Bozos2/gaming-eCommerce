@@ -37,7 +37,7 @@ const Review = () => {
       <div className="flex justify-center ml-6 sm:ml-0 mt-24 sm:mt-48">
         <div
           className={`relative bg-gray-300 h-[101px] w-[101px]  ml-[-26px] flex justify-center items-center  rounded-full transition-transform transform hover:-translate-x-6  ${
-            selectedSelection === 0 ? "focus:-translate-x-6 bg-[#e11d48]" : ""
+            selectedSelection === 0 ? "focus:-translate-x-6 bg-rose-600" : ""
           }`}
           onClick={() => handleSelectionClick(0)}
           tabIndex={0}
@@ -49,7 +49,7 @@ const Review = () => {
         </div>
         <div
           className={`relative bg-gray-300 h-[101px] w-[101px] ml-[-26px] flex justify-center items-center  rounded-full transition-transform transform hover:-translate-x-6  ${
-            selectedSelection === 1 ? "focus:-translate-x-6 bg-[#e11d48]" : ""
+            selectedSelection === 1 ? "focus:-translate-x-6 bg-rose-600" : ""
           }`}
           onClick={() => handleSelectionClick(1)}
           tabIndex={0}
@@ -61,7 +61,7 @@ const Review = () => {
         </div>
         <div
           className={`relative bg-gray-300 h-[101px] w-[101px] ml-[-26px] flex justify-center items-center  rounded-full transition-transform transform hover:-translate-x-6  ${
-            selectedSelection === 2 ? "focus:-translate-x-6 bg-[#e11d48]" : ""
+            selectedSelection === 2 ? "focus:-translate-x-6 bg-rose-600" : ""
           }`}
           onClick={() => handleSelectionClick(2)}
           tabIndex={0}
@@ -73,7 +73,7 @@ const Review = () => {
         </div>
         <div
           className={`relative bg-gray-300 h-[101px] w-[101px] ml-[-26px] flex justify-center items-center  rounded-full transition-transform transform hover:-translate-x-6  ${
-            selectedSelection === 3 ? "focus:-translate-x-6 bg-[#e11d48]" : ""
+            selectedSelection === 3 ? "focus:-translate-x-6 bg-rose-600" : ""
           }`}
           onClick={() => handleSelectionClick(3)}
           tabIndex={0}

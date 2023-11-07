@@ -17,6 +17,11 @@ import StripeIcon from "@/app/assets/NavbarIcons/StripeIcon";
 
 const components: { title: string; href: string; description: string }[] = [
   {
+    title: "Svi Proizvodi",
+    href: "/proizvodi",
+    description: "Pogledaj listu svih naših proizvoda na jednome mestu",
+  },
+  {
     title: "League of legends",
     href: "/proizvodi/leagueoflegends",
     description:
@@ -33,12 +38,6 @@ const components: { title: string; href: string; description: string }[] = [
     href: "/proizvodi/starcraft",
     description:
       "U ovoj sekciji cemo se prisjetiti starih dana gejminga uz naše figurice",
-  },
-  {
-    title: "Counter Strike",
-    href: "/proizvodi/counter-strike",
-    description:
-      "Volite karambit? ili pak butterfly?Sve to pronađite u CS sekciji",
   },
   {
     title: "Battle Royale",
