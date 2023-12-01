@@ -20,13 +20,13 @@ const Links = () => {
             <Link href="/home">Početna</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/proizvodi">Proizvodi</Link>
+            <Link href="/products">Proizvodi</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
             <Link href="/special">Special</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/profil">Profil</Link>
+            <Link href="/profile">Profil</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
             <Link href="/login">Prijava</Link>
@@ -45,16 +45,16 @@ const Links = () => {
             <Link href="/faq">Česta pitanja</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/dostava">Način dostave</Link>
+            <Link href="/shipping">Način dostave</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/online trgovina">Način plaćanja</Link>
+            <Link href="/online-payments">Način plaćanja</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/kontakt informacije">Korisnička podrška</Link>
+            <Link href="/contact">Korisnička podrška</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/garancija i povrat">Povrat novca</Link>
+            <Link href="/warranty">Povrat novca</Link>
           </li>
         </ul>
       </div>
@@ -126,16 +126,16 @@ const Links = () => {
         </h1>
         <ul className="font-poppins font-light text-base py-2 text-foreground">
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/faq">+123 456 789</Link>
+            <Link href="/contact">+123 456 789</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/dostava">+987 6543210</Link>
+            <Link href="/contact">+987 6543210</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/online trgovina">trgovinamainhem2@gmail.com</Link>
+            <Link href="/contact">gameloot2@gmail.com</Link>
           </li>
           <li className="hover:text-rose-600 pb-1">
-            <Link href="/kontakt informacije">mainhemtrgovina@gmail.com</Link>
+            <Link href="/contact">gameloottrgovina@gmail.com</Link>
           </li>
         </ul>
       </div>

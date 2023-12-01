@@ -15,7 +15,7 @@ const Footer = () => {
         <Links />
         <MobileLinks />
       </div>
-      <div className="w-full flex justify-around flex-col-reverse items-center lg:flex-row pt-6">
+      <div className="w-full flex justify-around flex-col-reverse items-center  lg:flex-row pt-6">
         <div className="flex flex-col mt-6 lg:mt-0">
           <div className="flex flex-row items-center">
             <LogoIcon />
@@ -39,7 +39,9 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <Payment />
+        <div>
+          <Payment />
+        </div>
       </div>
     </footer>
   );
