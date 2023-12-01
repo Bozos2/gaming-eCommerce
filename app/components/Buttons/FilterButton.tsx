@@ -16,7 +16,7 @@ const FilterButton = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="w-12 h-12 border border-white rounded-md flex justify-center items-center">
+        <button className="w-10 h-10 border border-white rounded-md flex justify-center items-center">
           <FilterIcon />
         </button>
       </SheetTrigger>
