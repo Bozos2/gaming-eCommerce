@@ -2,8 +2,10 @@
 
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 const Newsletter = () => {
+  const { toast } = useToast();
   const EmailinputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent) => {
@@ -32,6 +34,13 @@ const Newsletter = () => {
         <Button
           type="submit"
           className="w-1/3 mt-1 bg-primary hover:bg-foreground hover:text-primary font-bold rounded-md py-2"
+          onClick={() => {
+            toast({
+              title: "Pretplata uspješna!",
+              description:
+                "Hvala vam što ste se pretplatili na naš newsletter!",
+            });
+          }}
         >
           Pošalji!
         </Button>
