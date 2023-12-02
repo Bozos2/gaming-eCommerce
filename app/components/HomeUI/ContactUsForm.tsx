@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -7,11 +8,14 @@ import LocationIcon from "@/app/assets/ContactIcons/LocationIcon";
 import MailIcon from "@/app/assets/ContactIcons/MailIcon";
 import PhoneIcon from "@/app/assets/ContactIcons/PhoneIcon";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 const ContactUsForm = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
+
+  const { toast } = useToast();
 
   return (
     <motion.section
@@ -37,25 +41,35 @@ const ContactUsForm = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-4 h-[660px] lg:h-[300px]">
         <div className="flex flex-col justify-between gap-2 max-w-xl">
-          <div className="w-full  flex flex-row items-center gap-3 p-4  rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background">
+          <Link
+            href="/contact"
+            className="w-full  flex flex-row items-center gap-3 p-4  rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background"
+          >
             <PhoneIcon />
             <p className="text-foreground text-base font-semibold">
               {" "}
               +387-123-465
             </p>
-          </div>
-          <div className="w-full  flex flex-row items-center gap-3 p-4 rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background">
+          </Link>
+
+          <Link
+            href="/contact"
+            className="w-full  flex flex-row items-center gap-3 p-4 rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background"
+          >
             <MailIcon />{" "}
             <p className="text-foreground text-base font-semibold">
               mainheimtrgovina@gmail.com
             </p>
-          </div>
-          <div className="w-full flex flex-row items-center gap-3 p-4  rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background">
+          </Link>
+          <Link
+            href="/contact"
+            className="w-full flex flex-row items-center gap-3 p-4  rounded-md bg-[#1f1f1f] hover:cursor-pointer hover:bg-background"
+          >
             <LocationIcon />{" "}
             <p className="text-foreground text-base font-semibold">
               3050 Novi Sad, Srbija
             </p>
-          </div>
+          </Link>
         </div>
         <form
           method="POST"
@@ -89,7 +103,16 @@ const ContactUsForm = () => {
             placeholder="Message"
             className="border border-[#e11d48] w-full  pb-12 pt-4 px-3 rounded-md"
           ></textarea>
-          <Button className="w-full bg-primary hover:bg-foreground hover:text-primary font-bold rounded-md py-5">
+          <Button
+            className="w-full bg-primary hover:bg-foreground hover:text-primary font-bold rounded-md py-5"
+            onClick={() => {
+              toast({
+                title: "Forma uspješno popunjena!",
+                description:
+                  "U najkraćem mogućem roku ćemo vam odgovoriti. Hvala!",
+              });
+            }}
+          >
             Pošalji!
           </Button>
         </form>

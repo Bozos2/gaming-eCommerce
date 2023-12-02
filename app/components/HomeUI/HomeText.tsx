@@ -69,14 +69,14 @@ const HomeText = () => {
             variant="default"
             className="py-7 px-16 hover:bg-foreground hover:text-primary font-bold shadow-lg shadow-red-700/30"
           >
-            <Link href="#">Kupi sada</Link>
+            <Link href="/home">Kupi sada</Link>
           </Button>
           <Button
             asChild
             variant="outline"
             className="py-7 px-6 border border-foreground font-medium"
           >
-            <Link href="#">
+            <Link href="/faq">
               <EnterIcon className="mr-2 h-6 w-6" />
               Kako dizajnirati?
             </Link>
