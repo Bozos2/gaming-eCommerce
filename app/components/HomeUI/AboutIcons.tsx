@@ -44,7 +44,7 @@ const AboutIcons = () => {
           proizvode za sebe ili kao poklon, možete se osloniti na nas da vam
           vaši željeni artikli stignu na vrata u rekordnom vremenu.
         </p>
-        <Link href="/dostava" className="mt-6 ml-32 font-poppins">
+        <Link href="/shipping" className="mt-6 ml-32 font-poppins">
           <Button
             variant="link"
             className="flex flex-row text-xs text-foreground hover:text-primary"
@@ -71,7 +71,7 @@ const AboutIcons = () => {
           obzira da li se odlučite za plaćanje kreditnom karticom, PayPal-om ili
           nekom drugom opcijom.
         </p>
-        <Link href="/online trgovina" className="mt-6 ml-32 font-poppins">
+        <Link href="/online-payments" className="mt-6 ml-32 font-poppins">
           <Button
             variant="link"
             className="flex flex-row text-xs text-foreground hover:text-primary"
@@ -98,7 +98,7 @@ const AboutIcons = () => {
           nedoumice i upite. Bez obzira kada nam se obratite, naš tim je spreman
           da vam pomogne i pruži sve odgovore.
         </p>
-        <Link href="/kontakt informacije" className="mt-6 ml-32 font-poppins">
+        <Link href="/contact" className="mt-6 ml-32 font-poppins">
           <Button
             variant="link"
             className="flex flex-row text-xs text-foreground hover:text-primary"
@@ -127,7 +127,7 @@ const AboutIcons = () => {
           kupovinom, jednostavno nas kontaktirajte, a mi ćemo vam vratiti vaš
           novac bez ikakvih pitanja.
         </p>
-        <Link href="/garancija i povrat" className="mt-6 ml-32 font-poppins">
+        <Link href="/warranty" className="mt-6 ml-32 font-poppins">
           <Button
             variant="link"
             className="flex flex-row text-xs text-foreground hover:text-primary"
