@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
@@ -29,6 +30,24 @@ const MobileNavbar = () => {
     }
   });
 
+  const navItems = [
+    { text: "Početna", href: "/home", icon: <HomeIcon /> },
+    { text: "Proizvodi", href: "/products", icon: <ProductsIcon /> },
+    { text: "Special", href: "/special", icon: <SpecialIcon /> },
+    { text: "Košarica", href: "/cart", icon: <CartMobile /> },
+    { text: "Profil", href: "/profile", icon: <ProfileIcon /> },
+  ];
+
+  const pathname = usePathname();
+
+  const getNavItemClass = (href: string) => {
+    return `min-w-16 w-[126px] px-[9px]  pt-[7px] ${
+      pathname === href
+        ? "text-[#e11d48] border-t-2 border-[#e11d48] text-[11px]"
+        : ""
+    }`;
+  };
+
   return (
     <motion.nav
       variants={{ visible: { y: 0 }, hidden: { y: "100%" } }}
@@ -37,51 +56,19 @@ const MobileNavbar = () => {
       className="w-full h-[45px] bg-neutral-900 sticky bottom-0 sm:hidden"
     >
       <ul className="flex flex-row">
-        <Link
-          href="#"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
-        >
-          <li className="flex flex-col items-center">
-            <HomeIcon />
-            <p className="text-[9px]">Početna</p>
-          </li>
-        </Link>
-        <Link
-          href="#"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
-        >
-          <li className="flex flex-col items-center">
-            <ProductsIcon />
-            <p className="text-[9px]">Proizvodi</p>
-          </li>
-        </Link>
-        <Link
-          href="#"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
-        >
-          <li className="flex flex-col items-center">
-            <SpecialIcon />
-            <p className="text-[9px]">Special</p>
-          </li>
-        </Link>
-        <Link
-          href="#"
-          className="min-w-16 w-[126px] px-[9px]  pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
-        >
-          <li className="flex flex-col items-center">
-            <CartMobile />
-            <p className="text-[9px]">Košarica</p>
-          </li>
-        </Link>
-        <Link
-          href="#"
-          className="min-w-16 w-[126px] px-[9px] pt-[7px] focus:text-[#e11d48] focus:border-t-2 focus:border-[#e11d48] focus:text-[11px]"
-        >
-          <li className="flex flex-col items-center">
-            <ProfileIcon />
-            <p className="text-[9px]">Profil</p>
-          </li>
-        </Link>
+        {navItems.map((item, index) => (
+          <Link
+            key={index}
+            href={item.href}
+            className={getNavItemClass(item.href)}
+            scroll={false}
+          >
+            <li className="flex flex-col items-center">
+              {item.icon}
+              <p className="text-[9px]">{item.text}</p>
+            </li>
+          </Link>
+        ))}
       </ul>
     </motion.nav>
   );
