@@ -18,35 +18,35 @@ import StripeIcon from "@/app/assets/NavbarIcons/StripeIcon";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Svi Proizvodi",
-    href: "/proizvodi",
+    href: "/products",
     description: "Pogledaj listu svih naših proizvoda na jednome mestu",
   },
   {
     title: "League of legends",
-    href: "/proizvodi/leagueoflegends",
+    href: "/products?category=League%20of%20legends",
     description:
       "Ovde možete pronađi razne heroje kao i karaktere iz Arcane serijala",
   },
   {
     title: "Warcraft",
-    href: "/proizvodi/warcraft",
+    href: "/products?category=Warcraft",
     description:
       "Možete izabrati karaktera iz Horde,Alliancea ili pak neutralne rase",
   },
   {
     title: "Starcraft",
-    href: "/proizvodi/starcraft",
+    href: "/products?category=Starcraft",
     description:
       "U ovoj sekciji cemo se prisjetiti starih dana gejminga uz naše figurice",
   },
   {
     title: "Battle Royale",
-    href: "/proizvodi/battleroyale",
+    href: "/products?category=Battle%20Royale",
     description: "Figurice od PUBG-a,Fortnite,Warzonea pa sve do Apexa",
   },
   {
     title: "Others",
-    href: "/proizvodi/others",
+    href: "/products?category=Others",
     description:
       "Ovdje možete pronaći raznolike figurice poput onih iz Minecrafta,GTA,Withera i mnoge druge",
   },
@@ -66,7 +66,7 @@ const NavbarLinks = () => {
                 <NavigationMenuLink asChild>
                   <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/onlinetrgovina"
+                    href="/online-payments"
                   >
                     <StripeIcon className="h-24 w-24" />
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -79,14 +79,14 @@ const NavbarLinks = () => {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/pocetna" title="Početna">
+              <ListItem href="/home" title="Početna">
                 Na početnoj stranici saznajte najbitnije stvari o nasim
                 produktim i nasem poslovanju
               </ListItem>
-              <ListItem href="/politika rada" title="Politika rada">
-                Ovde možete saznati sve o našem poslovanju i vašoj privatnosti
+              <ListItem href="/faq" title="Najčešća pitanja">
+                Ovdje možete vidjeti najčešća postavljena pitanja korisnika
               </ListItem>
-              <ListItem href="/kontakt" title="Kontakt">
+              <ListItem href="/contact" title="Kontakt">
                 Ukoliko imate bilo kakvih pitanja i problema možete nas
                 kontaktirati
               </ListItem>
