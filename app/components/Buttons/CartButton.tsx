@@ -8,9 +8,10 @@ import CartIcon from "@/app/assets/NavbarIcons/CartIcon";
 
 const CartButton = () => {
   const ctxData = useCartContext();
-  const numberOfItems = ctxData.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
-  }, 0);
+  const numberOfItems =
+    ctxData.items?.reduce((curNumber, item) => {
+      return curNumber + item.amount;
+    }, 0) || 0;
   return (
     <Link href="/cart" scroll={false} className="pt-4">
       <button className="cursor-pointer font-oswald transition ease-in duration-200 hover:-translate-y-0.5  hover:scale-110 hidden sm:block">
