@@ -4,6 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import CartForm from "../../Forms/CartForm";
 
 export default function InterceptedCartPageAsModal() {
   return (
@@ -11,10 +12,10 @@ export default function InterceptedCartPageAsModal() {
       <InterceptedDialogContent className="max-w-[310px] sm:max-w-[625px]">
         <DialogHeader>
           <DialogTitle className="gap-4 border-b-2 pb-4 text-xl">
-            Shoping Cart
+            Košarica
           </DialogTitle>
         </DialogHeader>
-        samo je ovo mali test
+        <CartForm />
       </InterceptedDialogContent>
     </Dialog>
   );
