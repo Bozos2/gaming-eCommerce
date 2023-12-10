@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ProductProps } from "@/app/types/ProductTypes";
+import { useCartContext } from "../../context/cart-reducer";
+import { useToast } from "@/components/ui/use-toast";
+import { Tooltip } from "@nextui-org/react";
+
 import CartMobile from "@/app/assets/NavbarIcons/MobileIcons/CartMobile";
 import InfoIcon from "@/app/assets/NavbarIcons/MobileIcons/InfoIcon";
 import DifficultyStars from "@/app/helpers/DifficultyStars";
@@ -13,6 +19,19 @@ const styleImage = {
 };
 
 const ProductCard = (props: ProductProps) => {
+  const { toast } = useToast();
+  const cartCtx = useCartContext();
+  const addToCarthandler = () => {
+    cartCtx.addItem({
+      id: props.id,
+      src: props.src[0],
+      title: props.title,
+      price: props.price,
+      dimensions: props.dimensions,
+      amount: 1,
+    });
+  };
+
   return (
     <main className="w-[280px]  h-[410px] bg-zinc-900 font-poppins text-white rounded-lg shadow-md shadow-neutral-500 border hover:shadow-rose-600 cursor-pointer">
       <div className="h-3/5 flex justify-center items-center">
@@ -27,13 +46,13 @@ const ProductCard = (props: ProductProps) => {
       </div>
       <div className="flex flex-col justify-between pt-2 pb-3 px-4 h-2/5">
         <Link
-          href="/proizvodi/kategorija/detail"
+          href={`/products/${props.detail}`}
           className="text-lg font-bold hover:text-rose-600 "
         >
           {props.title}
         </Link>
         <div className="flex flex-row items-center gap-14">
-          <h4 className="text-md font-semibold">{props.price}€</h4>{" "}
+          <h4 className="text-md font-semibold">{props.price}.00€</h4>{" "}
           <span>
             <DifficultyStars rating={props.rating} />
           </span>
@@ -45,16 +64,28 @@ const ProductCard = (props: ProductProps) => {
           >
             Kupi sada
           </Button>
-
-          <button className="w-12 h-9 flex justify-center items-center  border-2 border-white rounded-lg  hover:text-rose-600 hover:border-rose-600  transition ease-in duration-500 hover:scale-110">
-            <CartMobile />
-          </button>
-          <Link
-            href="/proizvodi/warcraft/detalji"
-            className="w-12 h-9 flex justify-center items-center  border-2 border-white rounded-lg  hover:text-rose-600 hover:border-rose-600  transition ease-in duration-500 hover:scale-110"
-          >
-            <InfoIcon />
-          </Link>
+          <Tooltip showArrow={true} content="Dodaj u košaricu">
+            <button
+              onClick={() => {
+                addToCarthandler();
+                toast({
+                  title: "Uspješno dodan proizvod u košaricu!",
+                  description: `Dodan proizvod: ${props.title}`,
+                });
+              }}
+              className="w-12 h-9 flex justify-center items-center  border-2 border-white rounded-lg  hover:text-rose-600 hover:border-rose-600  transition ease-in duration-500 hover:scale-110"
+            >
+              <CartMobile />
+            </button>
+          </Tooltip>
+          <Tooltip showArrow={true} content="Detalji proizvoda">
+            <Link
+              href={`/products/${props.detail}`}
+              className="w-12 h-9 flex justify-center items-center  border-2 border-white rounded-lg  hover:text-rose-600 hover:border-rose-600  transition ease-in duration-500 hover:scale-110"
+            >
+              <InfoIcon />
+            </Link>
+          </Tooltip>
         </div>
       </div>
     </main>
