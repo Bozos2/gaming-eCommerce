@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useCheckbox, Chip, VisuallyHidden, tv } from "@nextui-org/react";
 import { CheckIcon } from "@/app/assets/NavbarIcons/MobileIcons/CheckIcon";
 

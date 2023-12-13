@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Accordion,
@@ -9,21 +9,65 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CheckboxGroup, Checkbox } from "@nextui-org/react";
+import { RadioGroup, Radio } from "@nextui-org/react";
 
-const Filters = () => {
+const Filters = ({
+  onCategoryChange,
+  onDimensionsChange,
+  onSortChange,
+}: {
+  onCategoryChange: (newValue: string[]) => void;
+  onDimensionsChange: (newValue: string[]) => void;
+  onSortChange: (newValue: string) => void;
+}) => {
+  const [categorySelected, setCategorySelected] = useState<string[]>([]);
+  const [dimensionsSelected, setDimensionsSelected] = useState<string[]>([]);
+  const [sortSelected, setSortSelected] = useState("");
+
+  const handleCategoryChange = (
+    newValue: string[] | React.FormEvent<HTMLDivElement>
+  ) => {
+    if (Array.isArray(newValue)) {
+      setCategorySelected(newValue);
+      onCategoryChange(newValue);
+    }
+  };
+
+  const handleDimensionsChange = (
+    newValue: string[] | React.FormEvent<HTMLDivElement>
+  ) => {
+    if (Array.isArray(newValue)) {
+      setDimensionsSelected(newValue);
+      onDimensionsChange(newValue);
+    }
+  };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortSelected(event.target.value);
+    onSortChange(event.target.value);
+  };
+
+  useEffect(() => {
+    console.log(categorySelected);
+    console.log(dimensionsSelected);
+    console.log(sortSelected);
+  }, [categorySelected, dimensionsSelected, sortSelected]);
+
   return (
     <Accordion type="single" collapsible className="max-w-sm w-full  p-2">
       <AccordionItem value="item-1" className="border-b-0">
         <AccordionTrigger className="text-lg">Kategorija</AccordionTrigger>
         <AccordionContent>
           <div className="flex  gap-4">
-            <CheckboxGroup defaultValue={["Svi proizvodi"]}>
-              <Checkbox value="Svi proizvodi">Svi proizvodi</Checkbox>
+            <CheckboxGroup
+              value={categorySelected}
+              onChange={(newValue) => handleCategoryChange(newValue)}
+            >
               <Checkbox value="League of legends">League of legends</Checkbox>
               <Checkbox value="Warcraft">Warcraft</Checkbox>
               <Checkbox value="Starcraft">Starcraft</Checkbox>
               <Checkbox value="Battle Royale">Battle Royale</Checkbox>
-              <Checkbox value="Ostali">Ostali</Checkbox>
+              <Checkbox value="Others">Ostali</Checkbox>
             </CheckboxGroup>
           </div>{" "}
         </AccordionContent>
@@ -32,7 +76,10 @@ const Filters = () => {
         <AccordionTrigger className="text-lg">Dimenzije</AccordionTrigger>
         <AccordionContent>
           <div className="flex gap-4">
-            <CheckboxGroup>
+            <CheckboxGroup
+              value={dimensionsSelected}
+              onChange={(newValue) => handleDimensionsChange(newValue)}
+            >
               <Checkbox value="5x5">5x5</Checkbox>
               <Checkbox value="10x10">10x10</Checkbox>
               <Checkbox value="15x15">15x15</Checkbox>
@@ -44,13 +91,18 @@ const Filters = () => {
       <AccordionItem value="item-3" className="border-b-0">
         <AccordionTrigger className="text-lg">Sortiraj po</AccordionTrigger>
         <AccordionContent>
-          <div className="flex gap-4">
-            <CheckboxGroup>
-              <Checkbox value="najniza">Cena: najniza</Checkbox>
-              <Checkbox value="najviša">Cena: najviša</Checkbox>
-              <Checkbox value="A-Z">Naziv: A-Z</Checkbox>
-              <Checkbox value="Z-A">Naziv: Z-A</Checkbox>
-            </CheckboxGroup>
+          <div className="flex flex-col gap-4">
+            <RadioGroup
+              value={sortSelected}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleSortChange(event)
+              }
+            >
+              <Radio value="najniza">Cena: najniza</Radio>
+              <Radio value="najvisa">Cena: najviša</Radio>
+              <Radio value="A-Z">Naziv: A-Z</Radio>
+              <Radio value="Z-A">Naziv: Z-A</Radio>
+            </RadioGroup>
           </div>
         </AccordionContent>
       </AccordionItem>

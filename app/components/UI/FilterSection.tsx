@@ -1,11 +1,73 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import { CheckboxGroup } from "@nextui-org/react";
 import { CustomCheckbox } from "../UI/helper/CustomCheckbox";
+import { CustomRadioButton } from "./helper/CustomRadioButton";
 import { Button } from "@/components/ui/button";
+import { RadioGroup } from "@nextui-org/react";
 
-const FilterSection = () => {
-  const [groupSelected, setGroupSelected] = useState<string[]>([]);
+type StateProps = {
+  category?: string[];
+  dimensions?: string[];
+  sort?: string;
+  price?: string[];
+};
+
+const FilterSection = ({ category, dimensions, sort, price }: StateProps) => {
+  const router = useRouter();
+
+  const [categorySelected, setCategorySelected] = useState<string[]>(
+    Array.isArray(category) ? category : []
+  );
+
+  const [dimensionsSelected, setDimensionsSelected] = useState<string[]>(
+    Array.isArray(dimensions) ? dimensions : []
+  );
+  const [sortSelected, setSortSelected] = useState<string>(sort || "");
+  const [minPrice, setMinPrice] = useState<number | undefined>(
+    Array.isArray(price) ? parseInt(price[0], 10) : undefined
+  );
+
+  const [maxPrice, setMaxPrice] = useState<number | undefined>(
+    Array.isArray(price) ? parseInt(price[1], 10) : undefined
+  );
+
+  useEffect(() => {
+    const hasCategory = categorySelected.length > 0;
+    const hasSort = sortSelected.length > 0;
+    const hasDimensions = dimensionsSelected.length > 0;
+    const hasPrice =
+      typeof minPrice === "number" && typeof maxPrice === "number";
+
+    const options = [
+      { hasParam: hasCategory, key: "category", values: categorySelected },
+      {
+        hasParam: hasDimensions,
+        key: "dimensions",
+        values: dimensionsSelected,
+      },
+      { hasParam: hasSort, key: "sort", values: [sortSelected] },
+      {
+        hasParam: hasPrice,
+        key: "price",
+        values: [`${minPrice}&price=${maxPrice}`],
+      },
+    ];
+
+    const queryParams = options
+      .filter((option) => option.hasParam)
+      .map((option) => option.values.map((value) => `${option.key}=${value}`))
+      .flat();
+
+    const finalURL = `/products${
+      queryParams.length > 0 ? "?" : ""
+    }${queryParams.join("&")}`;
+    router.push(finalURL);
+  }, [categorySelected, dimensionsSelected, sortSelected, minPrice, maxPrice]);
+
   return (
     <div className="flex flex-col gap-3 w-full font-poppins">
       <div className="flex flex-col mt-4 w-full mb-2">
@@ -14,11 +76,15 @@ const FilterSection = () => {
           <input
             type="number"
             className="w-24 bg-background/80 border-4 text-center border-b-rose-600 border-t-0 border-r-transparent border-l-transparent focus:outline-none"
+            value={minPrice || ""}
+            onChange={(e) => setMinPrice(parseInt(e.target.value, 10))}
           />
           DO{" "}
           <input
             type="number"
             className="w-24 bg-background/80 border-4  text-center border-b-rose-600 border-t-0 border-r-transparent border-l-transparent focus:outline-none"
+            value={maxPrice || ""}
+            onChange={(e) => setMaxPrice(parseInt(e.target.value, 10))}
           />{" "}
         </div>
       </div>
@@ -28,21 +94,20 @@ const FilterSection = () => {
           label={<span className="font-bold">Kategorija</span>}
           orientation="horizontal"
           color="primary"
-          value={groupSelected}
+          value={categorySelected}
           onChange={(newValue) => {
             if (Array.isArray(newValue)) {
-              setGroupSelected(newValue);
+              setCategorySelected(newValue);
             }
           }}
         >
-          <CustomCheckbox value="Svi proizvodi">Svi proizvodi</CustomCheckbox>
           <CustomCheckbox value="League of legends">
             League of legends
           </CustomCheckbox>
           <CustomCheckbox value="Warcraft">Warcraft</CustomCheckbox>
           <CustomCheckbox value="Starcraft">Starcraft</CustomCheckbox>
           <CustomCheckbox value="Battle Royale">Battle Royale</CustomCheckbox>
-          <CustomCheckbox value="Ostali">Ostali</CustomCheckbox>
+          <CustomCheckbox value="Others">Ostali</CustomCheckbox>
         </CheckboxGroup>
       </div>
       <div className="flex flex-col gap-1 w-full mb-2">
@@ -51,10 +116,10 @@ const FilterSection = () => {
           label={<span className="font-bold">Dimenzije</span>}
           orientation="horizontal"
           color="primary"
-          value={groupSelected}
+          value={dimensionsSelected}
           onChange={(newValue) => {
             if (Array.isArray(newValue)) {
-              setGroupSelected(newValue);
+              setDimensionsSelected(newValue);
             }
           }}
         >
@@ -65,32 +130,21 @@ const FilterSection = () => {
         </CheckboxGroup>
       </div>
       <div className="flex flex-col gap-1 w-full mb-2">
-        <CheckboxGroup
+        <RadioGroup
           className="gap-1"
           label={<span className="font-bold">Sortiraj po</span>}
           orientation="horizontal"
           color="primary"
-          value={groupSelected}
+          value={sortSelected}
           onChange={(newValue) => {
-            if (Array.isArray(newValue)) {
-              setGroupSelected(newValue);
-            }
+            setSortSelected(newValue.target.value);
           }}
         >
-          <CustomCheckbox value="najniza">Cena: najniza</CustomCheckbox>
-          <CustomCheckbox value="najviša">Cena: najviša</CustomCheckbox>
-          <CustomCheckbox value="A-Z">Naziv: A-Z</CustomCheckbox>
-          <CustomCheckbox value="Z-A">Naziv: Z-A</CustomCheckbox>
-        </CheckboxGroup>
-      </div>
-
-      <div className="flex justify-center mt-1">
-        <Button
-          variant="default"
-          className="py-2 px-12 tracking-widest rounded-xl hover:bg-foreground hover:text-primary font-semibold font-poppins"
-        >
-          Spremi{" "}
-        </Button>
+          <CustomRadioButton value="najniza">Cena: najniza</CustomRadioButton>
+          <CustomRadioButton value="najviša">Cena: najviša</CustomRadioButton>
+          <CustomRadioButton value="A-Z">Naziv: A-Z</CustomRadioButton>
+          <CustomRadioButton value="Z-A">Naziv: Z-A</CustomRadioButton>
+        </RadioGroup>
       </div>
     </div>
   );

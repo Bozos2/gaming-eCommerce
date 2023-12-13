@@ -32,7 +32,7 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(0)}
           tabIndex={0}
         >
-          <Link href="/warcraft">Warcraft</Link>
+          <Link href="/products?category=Warcraft">Warcraft</Link>
         </SwiperSlide>
         <SwiperSlide
           className={`bg-secondary rounded-lg text-center cursor-pointer pt-1 px-1  focus-within:bg-rose-600 ${
@@ -41,7 +41,9 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(1)}
           tabIndex={0}
         >
-          <Link href="/proizvodi/league of legends">League of legends</Link>
+          <Link href="/products?category=League%20of%20legends">
+            League of legends
+          </Link>
         </SwiperSlide>
         <SwiperSlide
           className={`bg-secondary rounded-lg text-center cursor-pointer pt-1 px-1  focus-within:bg-rose-600 ${
@@ -50,7 +52,7 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(2)}
           tabIndex={0}
         >
-          <Link href="/proizvodi/starcraft">Starcraft</Link>
+          <Link href="/products?category=Starcraft">Starcraft</Link>
         </SwiperSlide>
         <SwiperSlide
           className={`bg-secondary rounded-lg text-center cursor-pointer pt-1 px-1  focus-within:bg-rose-600 ${
@@ -59,7 +61,7 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(3)}
           tabIndex={0}
         >
-          <Link href="/proizvodi">Svi proizvodi</Link>
+          <Link href="/products">Svi proizvodi</Link>
         </SwiperSlide>
         <SwiperSlide
           className={`bg-secondary rounded-lg text-center cursor-pointer pt-1 px-1  focus-within:bg-rose-600 ${
@@ -68,7 +70,7 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(4)}
           tabIndex={0}
         >
-          <Link href="/proizvodi/battle royale">Battle Royale</Link>
+          <Link href="/products?category=Battle%20Royale">Battle Royale</Link>
         </SwiperSlide>
         <SwiperSlide
           className={`bg-secondary rounded-lg text-center cursor-pointer pt-1 px-1  focus-within:bg-rose-600 ${
@@ -77,7 +79,7 @@ const MobileCateory = () => {
           onClick={() => handleSelectionClick(5)}
           tabIndex={0}
         >
-          <Link href="/proizvodi/ostali">Ostali</Link>
+          <Link href="/products?category=Others">Ostali</Link>
         </SwiperSlide>
       </Swiper>
       <div className="absolute top-0 right-0 w-12 h-full rounded-lg bg-gradient-to-l from-[#161619]  to-transparent z-10"></div>

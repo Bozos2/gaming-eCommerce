@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,9 +9,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useAuth } from "@/app/context/auth-context";
+import ResetPasswordModal from "./ResetPasswordModal";
 
 import profileimg from "../../../assets/Images/rev1.jpeg";
 import { buttonVariants } from "@/components/ui/button";
+import axios from "axios";
 
 const DUMMYTransakcije = [
   {
@@ -36,50 +38,33 @@ const DUMMYTransakcije = [
   },
 ];
 
+interface CustomDateFormatOptions {
+  year: "numeric";
+  month: "2-digit";
+  day: "2-digit";
+}
+
 const ProfileContent = () => {
-  const [selectedFile, setSelectedFile] = useState("");
   const authData = useAuth();
   const cookie = authData.token;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setSelectedFile(file ? file.name : "");
-    }
+  const originalDateString = authData.data.date_of_birth;
+  const originalDate = new Date(originalDateString);
+  const originalCreatedString = authData.data.created;
+  const originalCreated = new Date(originalCreatedString);
+
+  const options: CustomDateFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   };
+  const formattedDate = originalDate.toLocaleDateString("en-US", options);
+  const formattedCreated = originalCreated.toLocaleDateString("en-US", options);
 
   return (
     <div className="flex flex-col justify-center">
       {cookie ? (
         <>
-          <div className="flex justify-center">
-            <Image
-              alt="slika profila"
-              width={150}
-              height={150}
-              src={profileimg}
-              style={{ borderRadius: "50%" }}
-            />
-          </div>
-          <div className="mt-1 flex flex-col justify-center items-center">
-            <label
-              htmlFor="file"
-              className="text-white px-4  rounded cursor-pointer"
-            >
-              Klikni za promjenu
-            </label>
-            <input
-              type="file"
-              id="file"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            {selectedFile && (
-              <div className="text-center text-gray-400 text-xs">
-                Odabrana datoteka: {selectedFile}
-              </div>
-            )}
-          </div>
           <div className="flex flex-col justify-center">
             <div className="flex flex-row justify-center gap-3 mt-2">
               <h2 className="text-gray-400">
@@ -97,10 +82,24 @@ const ProfileContent = () => {
                 {authData.data.email}
               </h2>
             </div>
+            <div className="flex flex-row justify-center gap-3 mt-2">
+              <h2 className="text-gray-400">
+                <span className="font-bold text-white">Datum Rođenja: </span>
+                {formattedDate}
+              </h2>
+              <h2 className="text-gray-400">
+                <span className="font-bold text-white">Spol: </span>
+                {authData.data.gender}
+              </h2>
+            </div>
+            <div className="flex flex-wrap justify-center pt-1">
+              <h2 className="text-gray-400">
+                <span className="font-bold  text-white">Kreirano:</span>{" "}
+                {formattedCreated}
+              </h2>
+            </div>
             <div className="flex justify-center mt-2">
-              <button className="ml-1 text-blue-500 hover:underline hover:text-blue-700 text-sm">
-                Promjenite lozinku
-              </button>
+              <ResetPasswordModal title="Promjenite lozinku" />
             </div>
           </div>
           <div className="flex justify-center mt-4">
