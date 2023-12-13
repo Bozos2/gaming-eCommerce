@@ -11,6 +11,7 @@ import { useAuth } from "../../context/auth-context";
 import LoginImage from "../../assets/Images/LoginIllustration.png";
 import LockIcon from "@/app/assets/FormIcons/LockIcon";
 import MailIcon from "@/app/assets/FormIcons/MailIcon";
+import ResetPasswordModal from "../UI/helper/ResetPasswordModal";
 
 const imageStyle = {
   width: "603px",
@@ -60,7 +61,9 @@ const LoginForm = () => {
           firstName: responseData.result.firstname,
           lastName: responseData.result.lastname,
           email: responseData.result.email,
-          pfp: responseData.result.pfp,
+          date_of_birth: responseData.result.date_of_birth,
+          gender: responseData.result.gender,
+          created: responseData.result.created_at,
           purchases: [],
         });
 
@@ -144,12 +147,7 @@ const LoginForm = () => {
             </div>
           </div>
           <div className="mb-2">
-            <Link
-              href="#"
-              className="text-blue-500 hover:underline hover:text-blue-700 text-sm"
-            >
-              Zaboravili ste lozinku?
-            </Link>
+            <ResetPasswordModal title="Zaboravili ste lozinku?" />
           </div>
           <div className="flex justify-center mt-4">
             <Button

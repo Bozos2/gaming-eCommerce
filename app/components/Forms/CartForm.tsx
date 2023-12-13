@@ -31,6 +31,47 @@ const CartForm = () => {
     cartCtx.removeItem(id);
   };
 
+  const numberOfItems =
+    cartCtx.items?.reduce((curNumber, item) => {
+      return curNumber + item.amount;
+    }, 0) || 0;
+
+  const cartIDS = cartCtx.items?.map((item) => item.id) || [];
+
+  const buyItems = async () => {
+    const data = {
+      quantity: numberOfItems,
+      product_id: cartIDS,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v2/pay/checkout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await response.json();
+
+      console.log(responseData);
+
+      const { err, msg } = responseData;
+
+      if (!err) {
+        console.log("successfully");
+      } else if (response.status === 400 && responseData.err) {
+        console.log("Invalid action");
+      }
+    } catch (error) {
+      console.error("Error during POST request:", error);
+    }
+  };
+
   if (cartCtx.items?.length === 0) {
     return <h2 className="text-xl text-center">Košarica je prazna</h2>;
   }
@@ -115,6 +156,7 @@ const CartForm = () => {
         <Button
           variant="default"
           className="py-5 px-8 sm:py-7 sm:px-24 hover:bg-foreground hover:text-primary font-bold  text-lg tracking-widest"
+          onClick={buyItems}
         >
           ZAVRŠI KUPNJU
         </Button>

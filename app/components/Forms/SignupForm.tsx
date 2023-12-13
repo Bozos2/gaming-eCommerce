@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,7 +13,6 @@ import { useRouter } from "next/navigation";
 import { FormDataSchema } from "@/lib/schema";
 import CountryInput from "./CountryInput";
 import img7 from "../../assets/Images/form7.jpg";
-import ProfileAvatar from "./UploadAvatar";
 import UserIcon from "@/app/assets/FormIcons/UsersIcon";
 import MailIcon from "@/app/assets/FormIcons/MailIcon";
 import LockIcon from "@/app/assets/FormIcons/LockIcon";
@@ -23,8 +21,6 @@ export type Inputs = z.infer<typeof FormDataSchema>;
 
 const SignupForm = () => {
   const router = useRouter();
-  const [data, setData] = useState<Inputs>();
-  const [slika, setSlika] = useState<string | null>(null);
   const { toast } = useToast();
 
   const {
@@ -36,16 +32,8 @@ const SignupForm = () => {
     resolver: zodResolver(FormDataSchema),
   });
 
-  useEffect(() => {
-    console.log(data);
-    console.log("stanje slike", data?.slika);
-  }, [data, slika]);
-
   const submitedForm: SubmitHandler<Inputs> = async (data) => {
     reset();
-    setData({ ...data, slika });
-    console.log("stanje slike", data.slika);
-    console.log(data);
 
     const formData = {
       firstname: data.ime,
@@ -55,7 +43,6 @@ const SignupForm = () => {
       password: data.lozinka,
       gender: data.spol,
       date_of_birth: data.dob,
-      pfp: data.slika,
     };
 
     try {
@@ -81,7 +68,7 @@ const SignupForm = () => {
             "Molimo provjerite svoju mail adresu za verifikaciju naloga",
         });
         console.log("uspjesna:", result);
-      } else if (response.status === 400 && responseData.err) {
+      } else if (response.status === 400) {
         console.log("Invalid credentials");
         toast({
           variant: "destructive",
@@ -98,9 +85,8 @@ const SignupForm = () => {
 
   return (
     <section
-      className={`max-w-6xl w-full sm:w-[498px] xl:w-full   h-[900px] ${
-        hasErrors ? "sm:h-[680px]" : "sm:h-[600px]"
-      } flex justify-center items-center gap-4 bg-zinc-950 border shadow-md shadow-neutral-500 p-4 rounded-lg mx-4 my-12 sm:my-0 font-poppins`}
+      className={`max-w-6xl w-full sm:w-[498px] xl:w-full h-[800px] 
+        sm:h-[550px] flex justify-center items-center gap-4 bg-zinc-950 border shadow-md shadow-neutral-500 p-4 rounded-lg mx-4 my-12 sm:my-0 font-poppins`}
     >
       <div className="w-3/5 hidden h-full xl:block relative">
         <Image
@@ -112,25 +98,17 @@ const SignupForm = () => {
           priority={true}
         />
       </div>
-      <div className="xl:w-2/5 w-full h-full px-2">
-        <div className="flex justify-center sm:block">
-          <div className="sm:relative w-40 h-40 rounded-full bg-zinc-950 sm:top-[-100px] sm:ml-36 border-2 border-white">
-            <div className="text-center  h-full w-full">
-              <ProfileAvatar register={register} setSlika={setSlika} />
-              {errors.slika?.message && (
-                <p className="text-sm text-red-400">
-                  {errors.slika.message as React.ReactNode}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col relative sm:top-[-75px] top-6">
+      <div className="xl:w-2/5 w-full h-full flex items-center px-2">
+        <div className="flex flex-col justify-center mt-3">
           <h1 className="text-3xl font-semibold tracking-wider text-primary font-blackops mb-4 sm:mb-8">
             Kreiraj račun
           </h1>
           <form onSubmit={handleSubmit(submitedForm)}>
-            <div className="flex flex-col sm:flex-row gap-2 justify-between mb-2">
+            <div
+              className={`flex flex-col sm:flex-row gap-2 justify-between ${
+                hasErrors ? "mb:0" : "mb-2"
+              }`}
+            >
               <div className="sm:mr-2">
                 <label htmlFor="first-name" className="block text-white mb-1">
                   Ime:
@@ -175,7 +153,7 @@ const SignupForm = () => {
               </div>
             </div>
 
-            <div className="mb-2">
+            <div className={`${hasErrors ? "mb:0" : "mb-2"}`}>
               <label htmlFor="email" className="block text-white mb-1">
                 Email:
               </label>
@@ -195,7 +173,11 @@ const SignupForm = () => {
                 )}
               </div>
             </div>
-            <div className="mb-2  flex-col flex sm:flex-row gap-2 justify-between">
+            <div
+              className={`${
+                hasErrors ? "mb:0" : "mb-2"
+              }  flex-col flex sm:flex-row gap-2 justify-between`}
+            >
               <div className="sm:mr-2">
                 <label htmlFor="password" className="block text-white mb-1">
                   Lozinka:

@@ -6,15 +6,52 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Newsletter = () => {
   const { toast } = useToast();
-  const EmailinputRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (event: React.FormEvent) => {
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = async (
+    event
+  ) => {
     event.preventDefault();
 
-    const enteredText = EmailinputRef.current!.value;
+    const emailValue = emailRef.current?.value;
 
-    if (enteredText.trim().length === 0) {
-      return;
+    const data = {
+      email: emailValue,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3001/api/news/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+
+      console.log(responseData);
+
+      const { err, msg } = responseData;
+
+      if (!err) {
+        toast({
+          title: "Uspješna prijava!",
+          description: "Hvala vam na Vašoj vjernosti",
+        });
+      } else if (response.status === 400 && responseData.err) {
+        console.log("Invalid credentials");
+        toast({
+          variant: "destructive",
+          title: "Neuspješna prijava!",
+          description:
+            "Unesena mail adresa se već nalazi u našoj bazi podataka",
+        });
+      }
+
+      console.log("data:", emailValue);
+    } catch (error) {
+      console.error("Error during POST request:", error);
     }
   };
 
@@ -30,17 +67,11 @@ const Newsletter = () => {
           type="email"
           placeholder="Tvoj e-mail"
           className="p-2 border border-gray-300 rounded mb-2 focus:outline focus:outline-rose-600 focus:border-none"
+          ref={emailRef}
         />
         <Button
           type="submit"
           className="w-1/3 mt-1 bg-primary hover:bg-foreground hover:text-primary font-bold rounded-md py-2"
-          onClick={() => {
-            toast({
-              title: "Pretplata uspješna!",
-              description:
-                "Hvala vam što ste se pretplatili na naš newsletter!",
-            });
-          }}
         >
           Pošalji!
         </Button>
