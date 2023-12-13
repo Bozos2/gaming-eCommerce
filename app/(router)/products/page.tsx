@@ -64,8 +64,6 @@ const Products = async ({
     },
   ];
 
-  console.log("serc", search);
-
   return (
     <section className="flex flex-col   xl:justify-start  min-h-screen bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-800 via-zinc-900 to-black font-poppins">
       <div className="flex xl:justify-start justify-center mt-12 xl:ml-24 xl:w-1/2">

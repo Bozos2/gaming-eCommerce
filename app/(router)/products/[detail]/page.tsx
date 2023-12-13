@@ -73,6 +73,7 @@ const Detail = async ({ params }: { params: { detail: string } }) => {
       <div className="mx-4 my-4 max-w-7xl">
         <BreadcrumbsDeatil items={breadcrumbItems} />
         <DetailPage
+          id={detailProduct?._id.toString()}
           category={detailProduct?.category}
           title={detailProduct?.title}
           price={detailProduct?.price}
