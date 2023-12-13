@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useAuth } from "@/app/context/auth-context";
 
 import HomeIcon from "@/app/assets/NavbarIcons/MobileIcons/HomeIcon";
 import ProductsIcon from "@/app/assets/NavbarIcons/MobileIcons/ProductsIcon";
@@ -16,6 +17,9 @@ const MobileNavbar = () => {
   const [hidden, setHidden] = useState(false);
   let scrollTimeout: NodeJS.Timeout;
   let isBottom: boolean;
+
+  const authData = useAuth();
+  const cookie = authData.token;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -35,7 +39,11 @@ const MobileNavbar = () => {
     { text: "Proizvodi", href: "/products", icon: <ProductsIcon /> },
     { text: "Special", href: "/special", icon: <SpecialIcon /> },
     { text: "Košarica", href: "/cart", icon: <CartMobile /> },
-    { text: "Profil", href: "/profile", icon: <ProfileIcon /> },
+    {
+      text: "Profil",
+      href: cookie ? "/profile" : "/login",
+      icon: <ProfileIcon />,
+    },
   ];
 
   const pathname = usePathname();

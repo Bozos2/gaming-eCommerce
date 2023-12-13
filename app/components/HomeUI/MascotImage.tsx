@@ -23,6 +23,7 @@ const MascotImage = () => {
         width={410}
         height={800}
         style={ImageStyle}
+        priority
       />
     </motion.div>
   );

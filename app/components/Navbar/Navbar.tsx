@@ -7,7 +7,7 @@ import CartButton from "../Buttons/CartButton";
 
 const Navbar = () => {
   return (
-    <header className="sticky  top-0 w-full font-poppins z-40">
+    <header className="sticky  top-0 w-full  drop-shadow-md font-poppins z-40">
       <nav className="h-20 flex justify-around max-w-full m-auto  bg-neutral-900">
         <div className="flex items-center">
           <NavbarLogo />

@@ -79,17 +79,23 @@ const NavbarLinks = () => {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/home" title="Početna">
-                Na početnoj stranici saznajte najbitnije stvari o nasim
-                produktim i nasem poslovanju
-              </ListItem>
-              <ListItem href="/faq" title="Najčešća pitanja">
-                Ovdje možete vidjeti najčešća postavljena pitanja korisnika
-              </ListItem>
-              <ListItem href="/contact" title="Kontakt">
-                Ukoliko imate bilo kakvih pitanja i problema možete nas
-                kontaktirati
-              </ListItem>
+              <Link href="/home">
+                <ListItem title="Početna">
+                  Na početnoj stranici saznajte najbitnije stvari o nasim
+                  produktim i nasem poslovanju
+                </ListItem>
+              </Link>
+              <Link href="/faq">
+                <ListItem title="Najčešća pitanja">
+                  Ovdje možete vidjeti najčešća postavljena pitanja korisnika
+                </ListItem>
+              </Link>
+              <Link href="/contact">
+                <ListItem title="Kontakt">
+                  Ukoliko imate bilo kakvih pitanja i problema možete nas
+                  kontaktirati
+                </ListItem>
+              </Link>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -100,13 +106,11 @@ const NavbarLinks = () => {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
+                <Link href={component.href} key={component.title}>
+                  <ListItem title={component.title}>
+                    {component.description}
+                  </ListItem>
+                </Link>
               ))}
             </ul>
           </NavigationMenuContent>

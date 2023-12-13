@@ -1,11 +1,61 @@
+"use client";
+
 import ImageGallery from "./ImageGallery";
-import { imgProps } from "./ImageGallery";
 import RatingStar from "@/app/assets/RatingStarIcon";
 import TruckIcon from "@/app/assets/TruckIcon";
 import { Button } from "@/components/ui/button";
 import { DetailData } from "@/app/types/ProductTypes";
+import { useCartContext } from "../../context/cart-reducer";
+import { useToast } from "@/components/ui/use-toast";
 
 const DetailPage: React.FC<DetailData & { images: string[] }> = (props) => {
+  const { toast } = useToast();
+  const cartCtx = useCartContext();
+  const addToCarthandler = () => {
+    cartCtx.addItem({
+      id: props.id,
+      src: props.images[0],
+      title: props.title,
+      price: props.price,
+      dimensions: props.dimensions,
+      amount: 1,
+    });
+  };
+
+  const buyNow = async () => {
+    const data = {
+      quantity: 1,
+      product_id: props.id,
+    };
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v2/pay/checkout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await response.json();
+
+      console.log(responseData);
+
+      const { err, msg } = responseData;
+
+      if (!err) {
+        console.log("successfully");
+      } else if (response.status === 400 && responseData.err) {
+        console.log("Invalid action");
+      }
+    } catch (error) {
+      console.error("Error during POST request:", error);
+    }
+  };
+
   return (
     <section className="flex flex-col xl:flex-row gap-8 mt-6 font-poppins pb-10 xl:border-b border-white">
       <div>
@@ -53,6 +103,13 @@ const DetailPage: React.FC<DetailData & { images: string[] }> = (props) => {
             type="submit"
             variant="default"
             className="py-6 hover:bg-foreground hover:text-primary font-bold tracking-wider flex grow mr-4"
+            onClick={() => {
+              addToCarthandler();
+              toast({
+                title: "Uspješno dodan proizvod u košaricu!",
+                description: `Dodan proizvod: ${props.title}`,
+              });
+            }}
           >
             Dodaj u košaricu
           </Button>
@@ -60,6 +117,7 @@ const DetailPage: React.FC<DetailData & { images: string[] }> = (props) => {
             type="submit"
             variant="outline"
             className="py-6 font-bold tracking-wider"
+            onClick={buyNow}
           >
             Kupi Odmah
           </Button>
