@@ -88,6 +88,10 @@ module.exports = {
         dark: {
           colors: {
             mojaboja: "#ffffff",
+            secondary: {
+              DEFAULT: "#ffffff",
+              foreground: "#ffffff",
+            },
           },
         },
       },
