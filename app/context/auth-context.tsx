@@ -7,7 +7,9 @@ const defaultUserData = {
   firstName: "",
   lastName: "",
   email: "",
-  pfp: "",
+  date_of_birth: "",
+  gender: "",
+  created: "",
   purchases: [],
 };
 

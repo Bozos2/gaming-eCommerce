@@ -8,7 +8,9 @@ export type UserData = {
   firstName: string;
   lastName: string;
   email: string;
-  pfp: string;
+  date_of_birth: string;
+  gender: string;
+  created: string;
   purchases: PurchasesHistory[];
 };
 

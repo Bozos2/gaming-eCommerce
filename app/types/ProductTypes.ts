@@ -21,6 +21,7 @@ export type RelevantProps = {
 };
 
 export type DetailData = {
+  id: string;
   category: string;
   title: string;
   price: number;
